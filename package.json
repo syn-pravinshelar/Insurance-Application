@@ -4,7 +4,11 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "mongoose": "^5.9.27",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
@@ -17,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/syn-pravinshelar/Insurance-Application.git"
   },
-  "author": "Team A - Synechron",
+  "author": "Team - A",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/syn-pravinshelar/Insurance-Application/issues"
