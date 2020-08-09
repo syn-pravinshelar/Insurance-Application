@@ -33,7 +33,7 @@ exports.getDeductible = (req, res, next) => {
       if (response) {
         res.status(200).json(response);
       } else {
-        res.status(404).json({ message: "Deductible with given ID is not available in the system!" });
+        res.status(404).json({ message: `Deductible not found with id of ${req.params.id}`});
       }
     })
     .catch(error => {
