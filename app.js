@@ -9,8 +9,13 @@ const deductiblesRoutes = require("./routes/deductibles-api");
 const app = express(),
   port = process.env.PORT || 3000;
 
-  //mongodb+srv://pravin:elle73IgmaGAaE3P@cluster0.xuqex.mongodb.net/insurance-app?retryWrites=true&w=majority
-mongoose.connect('mongodb+srv://pravin:elle73IgmaGAaE3P@cluster0.xuqex.mongodb.net/insurance-app?retryWrites=true&w=majority', {
+// Mongo DB Atalas connection string-
+// mongoose.connect('mongodb+srv://pravin:elle73IgmaGAaE3P@cluster0.xuqex.mongodb.net/insurance-app?retryWrites=true&w=majority', {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true
+//   })
+
+mongoose.connect('mongodb://localhost:27017/test', {
     useUnifiedTopology: true,
     useNewUrlParser: true
   })
