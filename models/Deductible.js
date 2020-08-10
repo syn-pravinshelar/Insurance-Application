@@ -1,14 +1,23 @@
 var mongoose = require("mongoose");
 
 var deductibleScehma = new mongoose.Schema({
-    deductibleId: mongoose.Schema.Types.Number,
-    definedAs: mongoose.Schema.Types.String,
+    deductibleId: Number,
+    definedAs:  {
+        type: String,
+        required: [true, 'Please add an definedAs']
+      },
     deductibleValue: [{
-        text: mongoose.Schema.Types.String,
-        value: mongoose.Schema.Types.Number
+        text: String,
+        value: Number
     }],
-    aggregateValue: mongoose.Schema.Types.Number,
-    version: mongoose.Schema.Types.Number
+    aggregateValue: {
+        type: Number,
+        required: [true, 'Please add an aggregateValue']
+      },
+    version: {
+        type: Number,
+        required: [true, 'Please add an version']
+      }
 })
 
 const Deductible = mongoose.model("Deductible", deductibleScehma);
