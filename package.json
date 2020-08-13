@@ -20,7 +20,18 @@
     "node": "12.17.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,7 +41,9 @@
     "builddocker": "docker build -t synechron/node-web-app .",
     "docker": "docker run -p 3000:3000 -d synechron/node-web-app",
     "pruneimages": "docker image prune -a",
-    "cleandockers": "docker rm -f $(docker ps -a -q) && docker rmi -f $(docker images -q)"
+    "cleandockers": "docker rm -f $(docker ps -a -q) && docker rmi -f $(docker images -q)",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
@@ -41,5 +54,20 @@
   "bugs": {
     "url": "https://github.com/syn-pravinshelar/Insurance-Application/issues"
   },
-  "homepage": "https://github.com/syn-pravinshelar/Insurance-Application#readme"
+  "homepage": "https://github.com/syn-pravinshelar/Insurance-Application#readme",
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint . --fix",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "stylelint --syntax scss --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
