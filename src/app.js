@@ -79,7 +79,7 @@ app.use(
 // Mount routers
 
 // HealthCheck route to be used by services that scan for uptime
-app.use('/healthcheck', function (req, res, next) {
+app.use('/healthcheck', (req, res) => {
   res.status(200).send('HEALTH_CHECK_SUCCESS');
 });
 

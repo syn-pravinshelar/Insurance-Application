@@ -12,7 +12,7 @@ exports.getDeductible = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: deductible });
 });
 
-exports.createDeductible = asyncHandler(async (req, res, next) => {
+exports.createDeductible = asyncHandler(async (req, res) => {
   const deductible = await Deductible.create(req.body);
 
   res.status(201).json({

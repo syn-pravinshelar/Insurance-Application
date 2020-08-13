@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const formsScehma = new mongoose.Schema({
+const formsSchema = new mongoose.Schema({
   formId: mongoose.Schema.Types.Number,
   formNumber: mongoose.Schema.Types.String,
   formName: mongoose.Schema.Types.String,
@@ -20,5 +20,5 @@ const formsScehma = new mongoose.Schema({
   version: mongoose.Schema.Types.Number,
 });
 
-const Forms = mongoose.model('Forms', limitScehma);
+const Forms = mongoose.model('Forms', formsSchema);
 module.exports = Forms;
