@@ -1,6 +1,6 @@
 var express = require('express');
 const mongoSanitize = require('express-mongo-sanitize');
-const helmet = require("helmet");
+const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
@@ -12,7 +12,7 @@ const connectDB = require('./config/db');
 connectDB();
 
 // Route files
-const deductiblesRoutes = require("./routes/deductibles-api");
+const deductiblesRoutes = require('./routes/deductibles-api');
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use(xss());
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 mins
-  max: 100
+  max: 100,
 });
 app.use(limiter);
 
@@ -39,9 +39,11 @@ app.use(cors());
 
 // Body parser
 app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -55,7 +57,6 @@ app.use(express.urlencoded({
 //   );
 //   next();
 // });
-
 
 // app.use(function (req, res, next) {
 //   next(createError(404));
@@ -75,17 +76,17 @@ app.use(express.urlencoded({
 //   })
 // });
 
-
 // Mount routers
-app.use("/api/v1/deductibles", deductiblesRoutes);
+
+// HealthCheck route to be used by services that scan for uptime
+app.use('/healthcheck', function (req, res, next) {
+  res.status(200).send('HEALTH_CHECK_SUCCESS');
+});
+
+app.use('/api/v1/deductibles', deductiblesRoutes);
 
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(
-  PORT,
-  console.log(
-    `RESTful API server started on port ${PORT}`
-  )
-);
+app.listen(PORT, console.log(`RESTful API server started on port ${PORT}`));
