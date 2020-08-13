@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var productScehma = new mongoose.Schema({
+const productScehma = new mongoose.Schema({
   productId: mongoose.Schema.Types.Number,
   productName: mongoose.Schema.Types.String,
   lineOfBusiness: {

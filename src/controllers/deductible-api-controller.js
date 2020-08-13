@@ -1,4 +1,4 @@
-const Deductible = require("../models/deductible");
+const Deductible = require('../models/deductible');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 
@@ -6,9 +6,7 @@ exports.getDeductible = asyncHandler(async (req, res, next) => {
   const deductible = await Deductible.findById(req.params.id);
 
   if (!deductible) {
-    return next(
-      new ErrorResponse(`Deductible not found with id of ${req.params.id}`, 404)
-    );
+    return next(new ErrorResponse(`Deductible not found with id of ${req.params.id}`, 404));
   }
 
   res.status(200).json({ success: true, data: deductible });
@@ -19,10 +17,9 @@ exports.createDeductible = asyncHandler(async (req, res, next) => {
 
   res.status(201).json({
     success: true,
-    data: deductible
+    data: deductible,
   });
 });
-
 
 // exports.getDeductible = (req, res, next) => {
 //   Deductible.findById(req.params.id)
@@ -39,7 +36,6 @@ exports.createDeductible = asyncHandler(async (req, res, next) => {
 //       });
 //     });
 // };
-
 
 // exports.createDeductible = (req, res, next) => {
 //   //const url = req.protocol + "://" + req.get("host");

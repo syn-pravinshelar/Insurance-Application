@@ -1,10 +1,10 @@
-var express = require('express');
+const express = require('express');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
-var logger = require('morgan');
+const logger = require('morgan');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
