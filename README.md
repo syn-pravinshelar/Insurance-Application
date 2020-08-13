@@ -5,6 +5,13 @@
 - You will need docker installed on your machine.
 - You will need Node installed on your machine
 
+## Code Quality
+
+Linting and Prettier is added for code quality check with airbnb standards.
+If you want to bypass pre-commit hook for linting errors use below
+
+> git commit --no-verify -m "your commit message"
+
 ## Docker creation
 
 1. Create a build from Dockerfile
