@@ -69,6 +69,7 @@
 The recommended way to run this app on local is
 
 > docker-compose build
+
 > docker-compose up
 
 Any change you make in code is reflected with nodemon applying changes to docker
