@@ -18,4 +18,4 @@ ENV PORT=80
 
 EXPOSE 80
 
-CMD [ "nodemon", "app.js" ]
+CMD [ "npm", "start" ]
