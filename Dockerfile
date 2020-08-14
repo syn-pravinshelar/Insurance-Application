@@ -8,13 +8,14 @@ WORKDIR /app
 COPY package.json package.json
 
 RUN npm install && mv node_modules /node_modules
+RUN npm install -g nodemon
 
 COPY src .
 
 ENV NODE_ENV=production
 ENV DATABASE=mongodb://mongodb:27017/synechron
-ENV PORT=3000
+ENV PORT=80
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD node app.js
+CMD [ "nodemon", "app.js" ]
