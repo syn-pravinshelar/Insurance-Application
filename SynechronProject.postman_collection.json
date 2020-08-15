@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "0362bd64-9521-41ce-9095-1542ca1a6d53",
+		"name": "SynechronProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"item": [
+				{
+					"name": "Generate Token Using Username and Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a506e3d-8b0b-429a-8eec-dcac658823db",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"BEARER_TOKEN\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "55a8b102-1aa6-4e19-8b27-0f8e75cdcb71",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"user4\",\n    \"password\":\"synechron\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/api/v1/authenticate",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Deductible",
+			"item": [
+				{
+					"name": "Create Deductible",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f5f61ae2-4c82-4cd4-9ec0-f47f0360be53",
+								"exec": [
+									"console.log(\"token\", pm.globals.get('token'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deductibleId\": \"1\",\n    \"definedAs\": \"SummerDeductible\",\n    \"deductibleValue\": [\n        {\n            \"text\": \"BayArea\",\n            \"value\": 1\n        }\n    ],\n    \"aggregateValue\": 1,\n    \"version\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/api/v1/deductible",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"deductible"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Deductible",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/api/v1/deductible/1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"deductible",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Deductible",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "df719bd0-325a-4bef-8f6a-b534b7ae2203",
+								"exec": [
+									"console.log(\"token\", pm.globals.get('token'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deductibleId\": \"1\",\n    \"definedAs\": \"WinterDeductible\",\n    \"deductibleValue\": [\n        {\n            \"text\": \"BayArea\",\n            \"value\": 144\n        }\n    ],\n    \"aggregateValue\": 1,\n    \"version\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/api/v1/deductible/1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"deductible",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Deductible",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/api/v1/deductible/1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"deductible",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Deductible",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deductibleId\": [1,2,3,4,5,6]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/api/v1/deductible/list",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"deductible",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BEARER_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "62176a76-0c92-4fed-a458-29c698777392",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b8ea860a-dde0-451c-8621-01e1e0dd9e34",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "eb96b541-f626-4c5d-a552-8fe2ef29b9cd",
+			"key": "API_BASE_URL",
+			"value": "http://localhost"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

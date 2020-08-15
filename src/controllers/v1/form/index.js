@@ -9,7 +9,7 @@ const get = AsyncHandler(async (req, res, next) => {
     return next(new AppError(404, `Resource not found with id of ${result.value}`));
   }
   return res.status(200).json({
-    data: { result },
+    data: { ...result.toObject() },
   });
 });
 
@@ -18,19 +18,23 @@ const create = AsyncHandler(async (req, res) => {
   const result = await model.save();
 
   return res.status(200).json({
-    data: { result },
+    data: { ...result.toObject() },
   });
 });
 
-const update = AsyncHandler(async (req, res) => {
+const update = AsyncHandler(async (req, res, next) => {
   const model = await MongoModel.findOneAndUpdate({ formId: req.params.id }, req.body, {
     new: true,
   });
 
+  if (!model) {
+    return next(new AppError(404, `Resource not found with id of ${req.params.id}`));
+  }
+
   const result = await model.save();
 
   return res.status(200).json({
-    data: { result },
+    data: { ...result.toObject() },
   });
 });
 
@@ -53,7 +57,7 @@ const list = AsyncHandler(async (req, res) => {
   });
 
   return res.status(200).json({
-    data: { result },
+    data: [...result.map((item) => item.toObject())],
   });
 });
 

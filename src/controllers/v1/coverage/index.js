@@ -1,9 +1,9 @@
-const MongoModel = require('../../../models/endorsement');
+const MongoModel = require('../../../models/coverage');
 const AsyncHandler = require('../../../middleware/asyncHandler');
 const AppError = require('../../../utils/appError');
 
 const get = AsyncHandler(async (req, res, next) => {
-  const result = await MongoModel.findOne({ endorsementId: req.params.id });
+  const result = await MongoModel.findOne({ coverageId: req.params.id });
 
   if (!result) {
     return next(new AppError(404, `Resource not found with id of ${result.value}`));
@@ -23,13 +23,14 @@ const create = AsyncHandler(async (req, res) => {
 });
 
 const update = AsyncHandler(async (req, res, next) => {
-  const model = await MongoModel.findOneAndUpdate({ endorsementId: req.params.id }, req.body, {
+  const model = await MongoModel.findOneAndUpdate({ coverageId: req.params.id }, req.body, {
     new: true,
   });
 
   if (!model) {
     return next(new AppError(404, `Resource not found with id of ${req.params.id}`));
   }
+
   const result = await model.save();
 
   return res.status(200).json({
@@ -38,7 +39,7 @@ const update = AsyncHandler(async (req, res, next) => {
 });
 
 const remove = AsyncHandler(async (req, res, next) => {
-  const result = await MongoModel.deleteOne({ endorsementId: req.params.id });
+  const result = await MongoModel.deleteOne({ coverageId: req.params.id });
 
   if (!result.deletedCount) {
     return next(new AppError(404, `Resource not found with id of ${req.params.id}`));
@@ -50,8 +51,8 @@ const remove = AsyncHandler(async (req, res, next) => {
 
 const list = AsyncHandler(async (req, res) => {
   const result = await MongoModel.find({
-    endorsementId: {
-      $in: req.body.endorsementId,
+    coverageId: {
+      $in: req.body.coverageId,
     },
   });
 

@@ -1,5 +1,8 @@
-const config = {};
-
-config.mongodb = {};
-
-config.mongodb.ConnectionString = 'mongodb://localhost:27017/insurance-application';
+module.exports = {
+  jwtOptions: {
+    algorithm: 'HS256',
+    expiresIn: '10m',
+  },
+  tokenSecretKey:
+    'b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAArAAAABNlY2RzYS1zaGEyLW5pc3RwNTIxAAAACG5pc3RwNTIxAAAAhQQBXBfFtsF9ee+Gev1NSIOa+sUnCshiWWb1WpzxzU9vWneMWecuK1+VI4WBTBBYMJk+k4FTsfMGyPsxAOXiyIfErAoBQ5qh4pIFbz7gf7IjXo/hrJrl436Wfvo3UaeCDSpE6rCneptYAnR/HQnPEXz+665Ivn6/DqZYz762DMJZylHatDUAAAEoC49jnwuPY58AAAATZWNkc2Etc2hhMi1uaXN0cDUyMQAAAAhuaXN0cDUyMQAAAIUEAVwXxbbBfXnvhnr9TUiDmvrFJwrIYllm9Vqc8c1Pb1p3jFnnLitflSOFgUwQWDCZPpOBU7HzBsj7MQDl4siHxKwKAUOaoeKSBW8+4H+yI16P4aya5eN+ln76N1Gngg0qROqwp3qbWAJ0fx0JzxF8/uuuSL5+vw6mWM++tgzCWcpR2rQ1AAAAQgC3R24X4Kmn2wxIwfvco6SRyUc/Wk6jGBcsFVtCaSlAA/sduGtZLSg8DVhFINbXvmyb3aRuCWfwqxziNJJoQpKEcwAAACpyYXZpamVldEBSYXZpamVldHMtTUJQLmhzZDEudmEuY29tY2FzdC5uZXQ=',
+};

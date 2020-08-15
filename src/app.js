@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const logger = require('morgan');
 const connectDB = require('./config/db');
+const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 
@@ -39,12 +40,13 @@ app.use(
 );
 
 app.use('/api/v1/healthcheck', require('./routes/v1/healthcheck'));
-app.use('/api/v1/deductible', require('./routes/v1/deductible'));
-app.use('/api/v1/coverage', require('./routes/v1/coverage'));
-app.use('/api/v1/endorsement', require('./routes/v1/endorsement'));
-app.use('/api/v1/form', require('./routes/v1/form'));
-app.use('/api/v1/limit', require('./routes/v1/limit'));
-app.use('/api/v1/product', require('./routes/v1/product'));
+app.use('/api/v1/authenticate', require('./routes/v1/authenticate'));
+app.use('/api/v1/deductible', authMiddleware, require('./routes/v1/deductible'));
+app.use('/api/v1/coverage', authMiddleware, require('./routes/v1/coverage'));
+app.use('/api/v1/endorsement', authMiddleware, require('./routes/v1/endorsement'));
+app.use('/api/v1/form', authMiddleware, require('./routes/v1/form'));
+app.use('/api/v1/limit', authMiddleware, require('./routes/v1/limit'));
+app.use('/api/v1/product', authMiddleware, require('./routes/v1/product'));
 
 /*
  * Default Error Handler

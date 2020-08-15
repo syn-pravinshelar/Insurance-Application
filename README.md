@@ -114,9 +114,13 @@ Healthcheck Route URL:
 
 > curl http://localhost/api/v1/healthcheck -X GET -H "Content-Type: application/json"
 
+Token Authorization:
+
+The token will be active for 10m but can be increased from config
+
 ================================================================================
 
-## Application Standards
+## Application Coding Standards
 
 ================================================================================
 
@@ -125,46 +129,12 @@ Healthcheck Route URL:
 
    > git commit --no-verify -m "your commit message"
 
-2. Routes with check using regular expressions
+================================================================================
 
-```
-router.get('/:id([0-9]{1,30})', controller.get);
-```
+## API Examples in Postman
 
 ================================================================================
 
-## API Examples
-
-================================================================================
-
-- Below example are for deductible
-
-1. Create a record | PUT
-
-```
- curl http://localhost/api/v1/deductible -X POST -H "Content-Type: application/json" -d '{"deductibleId":"1", "definedAs":"SummerDeductible","deductibleValue": [{"text":"BayArea","value":1}],"aggregateValue":1,"version":1}'
-```
-
-2. Get a record | GET
-
-```
-curl http://localhost/api/v1/deductible/1 -X GET -H "Content-Type: application/json"
-```
-
-3. Update a single record | PUT
-
-```
-curl http://localhost/api/v1/deductible/1 -X PUT -H "Content-Type: application/json" -d '{ "definedAs":"SummerDeductible","deductibleValue": [{"text":"BayArea","value":2}],"aggregateValue":2,"version":1}'
-```
-
-4. Delete a single record | DELETE
-
-```
-curl http://localhost/api/v1/deductible/1 -X DELETE -H "Content-Type: application/json"
-```
-
-5. Fetch set of records | POST
-
-```
-curl http://localhost/api/v1/deductible/list -X POST -H "Content-Type: application/json" -d '{"deductibleId":[1,2,3,5]}'
-```
+1. Import SynechronProject.postman_collection.json into Postman
+2. Run the Authenticate API
+3. Run the rest of the APIs, preferrably in Create, Get, Update, Delete. Params are preloaded, please update as necessary.
