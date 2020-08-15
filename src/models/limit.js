@@ -6,7 +6,7 @@ const limitScehma = new mongoose.Schema({
   limitValueType: mongoose.Schema.Types.String,
   limitValue: [
     {
-      type: {
+      next: {
         text: mongoose.Schema.Types.String,
         value: mongoose.Schema.Types.Number,
       },

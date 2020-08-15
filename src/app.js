@@ -38,16 +38,13 @@ app.use(
   })
 );
 
-// Mount routers
-
-// HealthCheck route to be used by services that scan for uptime
-app.use('/healthcheck', (req, res) => {
-  res.status(200).send('HEALTH_CHECK_SUCCESS');
-});
-
-//app.use('/api/v1/healthcheck', require('./controllers/v1/healthcheck'));
-
+app.use('/api/v1/healthcheck', require('./routes/v1/healthcheck'));
 app.use('/api/v1/deductible', require('./routes/v1/deductible'));
+app.use('/api/v1/coverage', require('./routes/v1/coverage'));
+app.use('/api/v1/endorsement', require('./routes/v1/endorsement'));
+app.use('/api/v1/form', require('./routes/v1/form'));
+app.use('/api/v1/limit', require('./routes/v1/limit'));
+app.use('/api/v1/product', require('./routes/v1/product'));
 
 /*
  * Default Error Handler
@@ -76,7 +73,7 @@ app.listen(PORT, () => {
   });
 });
 
-/****
+/** **
  *
  * `date=>${new Date()}\n method=>${req.method}nsender:${req.ip}`
  */

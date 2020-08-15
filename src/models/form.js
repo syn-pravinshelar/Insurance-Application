@@ -8,7 +8,7 @@ const formsSchema = new mongoose.Schema({
   jurisdiction: [
     {
       type: mongoose.Schema.Types.String,
-      default: undefined,
+      default: '',
     },
   ],
   effectiveDate: mongoose.Schema.Types.Date,
