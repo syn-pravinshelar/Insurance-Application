@@ -7,11 +7,10 @@ const mongoose = require('mongoose');
 //   })
 
 const connectDB = async () => {
-  await mongoose.connect('mongodb://localhost:27017/synechron', {
+  return mongoose.connect('mongodb://mongo:27017/synechron', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  console.log(`MongoDB Connected`);
 };
 
 module.exports = connectDB;

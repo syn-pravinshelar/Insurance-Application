@@ -12,8 +12,8 @@ RUN npm install -g nodemon
 
 COPY src .
 
+
 ENV NODE_ENV=production
-ENV DATABASE=mongodb://mongodb:27017/synechron
 ENV PORT=80
 
 EXPOSE 80

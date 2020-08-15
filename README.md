@@ -116,7 +116,13 @@ The application is simple a single EC2 instance loading with Ubuntu and running 
 
 ================================================================================
 
-Linting and Prettier is added for code quality check with airbnb standards.
-If you want to bypass pre-commit hook for linting errors use below
+1. Linting and Prettier is added for code quality check with airbnb standards.
+   If you want to bypass pre-commit hook for linting errors use below
 
-> git commit --no-verify -m "your commit message"
+   > git commit --no-verify -m "your commit message"
+
+2. Routes with check using regular expressions
+
+```
+router.get('/:id([0-9]{1,30})', controller.get);
+```

@@ -1,15 +1,15 @@
 version: '3'
 services:
   api:
-    image: sample-express-app
+    image: synechron-app
     build: .
-    networks:
-      - backend
+    depends_on:
+      - mongo
     ports:
       - '80:80'
     volumes:
       - .:/app/
-
-networks:
-  backend:
-    driver: bridge
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
