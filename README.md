@@ -126,3 +126,41 @@ The application is simple a single EC2 instance loading with Ubuntu and running 
 ```
 router.get('/:id([0-9]{1,30})', controller.get);
 ```
+
+================================================================================
+
+## API Examples
+
+================================================================================
+
+- Below example are for deductible
+
+1. Create a record | PUT
+
+```
+ curl http://localhost/api/v1/deductible -X POST -H "Content-Type: application/json" -d '{"deductibleId":"1", "definedAs":"SummerDeductible","deductibleValue": [{"text":"BayArea","value":1}],"aggregateValue":1,"version":1}'
+```
+
+2. Get a record | GET
+
+```
+curl http://localhost/api/v1/deductible/1 -X GET -H "Content-Type: application/json"
+```
+
+3. Update a single record | PUT
+
+```
+curl http://localhost/api/v1/deductible/1 -X PUT -H "Content-Type: application/json" -d '{ "definedAs":"SummerDeductible","deductibleValue": [{"text":"BayArea","value":2}],"aggregateValue":2,"version":1}'
+```
+
+4. Delete a single record | DELETE
+
+```
+curl http://localhost/api/v1/deductible/1 -X DELETE -H "Content-Type: application/json"
+```
+
+5. Fetch set of records | POST
+
+```
+curl http://localhost/api/v1/deductible/list -X POST -H "Content-Type: application/json" -d '{"deductibleId":[1,2,3,5]}'
+```

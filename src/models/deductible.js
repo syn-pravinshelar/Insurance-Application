@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const deductibleScehma = new mongoose.Schema({
+const schema = new mongoose.Schema({
   deductibleId: Number,
   definedAs: {
     type: String,
@@ -22,6 +22,6 @@ const deductibleScehma = new mongoose.Schema({
   },
 });
 
-const Deductible = mongoose.model('Deductible', deductibleScehma);
+const Deductible = mongoose.model('Deductible', schema);
 
 module.exports = Deductible;

@@ -5,9 +5,9 @@ const controller = require('../../controllers/v1/deductible');
 const router = express.Router();
 
 router.get('/:id', controller.get);
-router.post('', controller.list);
-router.put('', controller.create);
-router.patch('', controller.update);
-router.delete('', controller.remove);
+router.post('', controller.create);
+router.put('/:id', controller.update);
+router.delete('/:id', controller.remove);
+router.post('/list', controller.list);
 
 module.exports = router;

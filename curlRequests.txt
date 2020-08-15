@@ -1,0 +1,6 @@
+curl http://localhost/api/v1/deductible -X POST  -H "Content-Type: application/json" -d '{"title":"Post 1", "content":"Lorem ipsum"}'
+
+curl http://localhost/api/v1/deductible/123 -X GET  -H "Content-Type: application/json"
+
+
+curl http://localhost/api/v1/deductible -X PUT  -H "Content-Type: application/json" -d '{"deductibleId":"1", "definedAs":"Deductible1","deductibleValue": [{"text":'Deductible1',"value":1}],"aggregateValue":1,"version":1}'

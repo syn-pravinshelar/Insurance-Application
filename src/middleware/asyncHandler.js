@@ -1,8 +1,15 @@
 const AppError = require('../utils/appError');
 
+/*
+PreDefined or Known error sets
+*/
+
 const standard400Errors = ['ValidationError'];
 const standard404Errors = ['CastError'];
 
+/*
+The purpose of the AsyncHandler is to catch all errors from the async functions that it wraps
+*/
 const AsyncHandler = (fn) => {
   return (req, res, next) => {
     fn(req, res, next).catch((err) => {
