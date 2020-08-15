@@ -108,7 +108,11 @@ ssh_to_ec2 = ssh -i /Users/ravijeet/.ssh/id_snakeeyes.pem ubuntu@ec2-54-86-139-7
 
 ================================================================================
 
-The application is simple a single EC2 instance loading with Ubuntu and running Docker with Node and Mongo built in
+The application is simple a single EC2 instance loading with Ubuntu and running Docker with Node and Mongo built in.
+
+Healthcheck Route URL:
+
+> curl http://localhost/api/v1/healthcheck -X GET -H "Content-Type: application/json"
 
 ================================================================================
 
