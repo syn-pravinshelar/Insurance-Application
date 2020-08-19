@@ -122,6 +122,11 @@ resource "null_resource" "movelocalfilestoremote" {
   }
 
   provisioner "file" {
+    source      = "docker-compose.yml"
+    destination = "/tmp/${var.codeversion}/docker-compose.yml"
+  }
+
+  provisioner "file" {
     source      = "src"
     destination = "/tmp/${var.codeversion}/"
   }
@@ -185,9 +190,13 @@ resource "null_resource" "runapp" {
     inline = [
       "cd /tmp/${var.codeversion}",
       "npm install",
-      "sudo docker rm -f $(docker ps -a -q) && sudo docker rmi -f $(docker images -q)",
-      "sudo docker build -t snkeyeapi-default .",
-      "sudo docker run -p 80:80 -d snkeyeapi-default"
+      "sudo curl -L \"https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
+      "sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose",
+      "sudo chmod +x /usr/bin/docker-compose",
+      "cd /tmp/${var.codeversion}",
+      "sudo docker-compose down",
+      "sudo docker-compose build",
+      "sudo docker-compose up"
     ]
   }
 
