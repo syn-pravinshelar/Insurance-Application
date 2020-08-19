@@ -216,5 +216,5 @@ output "ssh_to_ec2" {
 }
 
 output "open_in_browser" {
-  value = "http://${aws_instance.web_server.public_dns}/healthcheck"
+  value = "http://${aws_instance.web_server.public_dns}/api/v1/healthcheck"
 }
