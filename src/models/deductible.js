@@ -1,27 +1,27 @@
-const mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
-const schema = new mongoose.Schema({
-  deductibleId: Number,
+var deductibleScehma = new mongoose.Schema({
+  // deductibleId: Number,
   definedAs: {
     type: String,
-    required: [true, 'Please add an definedAs'],
+    required: [true, 'Please add an definedAs']
   },
-  deductibleValue: [
-    {
-      text: String,
-      value: Number,
-    },
-  ],
+  deductibleValue: [{
+    text: String,
+    value: Number
+  }],
   aggregateValue: {
     type: Number,
-    required: [true, 'Please add an aggregateValue'],
+    required: [true, 'Please add an aggregateValue']
   },
   version: {
     type: Number,
-    required: [true, 'Please add an version'],
-  },
-});
+    required: [true, 'Please add an version']
+  }
+}, {
+  versionKey: false
+})
 
-const Deductible = mongoose.model('Deductible', schema);
+const Deductible = mongoose.model("Deductible", deductibleScehma);
 
 module.exports = Deductible;

@@ -1,18 +1,25 @@
 const mongoose = require('mongoose');
 
 const limitScehma = new mongoose.Schema({
-  limitId: mongoose.Schema.Types.Number,
-  limitType: mongoose.Schema.Types.String,
-  limitValueType: mongoose.Schema.Types.String,
-  limitValue: [
-    {
-      next: {
-        text: mongoose.Schema.Types.String,
-        value: mongoose.Schema.Types.Number,
-      },
-    },
-  ],
-  version: mongoose.Schema.Types.Number,
+  //limitId: Number,
+  limitType: {
+    type: String,
+    required: [true, 'Please add an limitType']
+  },
+  limitValueType: {
+    type: String,
+    required: [true, 'Please add an limitValueType']
+  },
+  limitValue: [{
+    text: String,
+    value: Number
+  }],
+  version: {
+    type: Number,
+    required: [true, 'Please add an version']
+  }
+}, {
+  versionKey: false
 });
 
 const Limit = mongoose.model('Limit', limitScehma);

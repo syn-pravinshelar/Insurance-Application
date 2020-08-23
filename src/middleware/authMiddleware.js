@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const AppError = require('../utils/appError');
+const ErrorResponse = require('../utils/errorResponse');
 const config = require('../config/config');
 const AsyncHandler = require('./asyncHandler');
 
@@ -10,11 +10,11 @@ const authHandler = AsyncHandler(async (req, res, next) => {
     const valid = await jwt.verify(token, config.tokenSecretKey, config.jwtOptions);
 
     if (!valid) {
-      return next(new AppError(401, 'Not Authorized'));
+      return next(new ErrorResponse('Not Authorized', 401));
     }
     return next();
   }
-  return next(new AppError(403, 'Missing Authentication Token'));
+  return next(new ErrorResponse('Missing Authentication Token', 403));
 });
 
 module.exports = authHandler;

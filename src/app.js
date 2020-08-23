@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const logger = require('morgan');
 const connectDB = require('./config/db');
+const errorHandler = require('./middleware/error');
 const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
@@ -48,23 +49,14 @@ app.use('/api/v1/form', authMiddleware, require('./routes/v1/form'));
 app.use('/api/v1/limit', authMiddleware, require('./routes/v1/limit'));
 app.use('/api/v1/product', authMiddleware, require('./routes/v1/product'));
 
-/*
- * Default Error Handler
- */
-// eslint-disable-next-line no-unused-vars
-app.use(({ statusCode = 500, status = 'Error', message = '' }, req, res, next) => {
-  res.status(statusCode).json({
-    status,
-    message,
-  });
-});
+app.use(errorHandler);
 
-app.use((req, res) => {
-  res.status(404).json({
-    status: 'Failed',
-    message: `Can't find ${req.originalUrl} on this server!`,
-  });
-});
+// app.use((req, res) => {
+//   res.status(404).json({
+//     status: 'Failed',
+//     message: `Can't find ${req.originalUrl} on this server!`,
+//   });
+// });
 
 const PORT = process.env.PORT || 3000;
 
