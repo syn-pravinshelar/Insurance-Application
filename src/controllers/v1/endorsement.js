@@ -1,5 +1,6 @@
 const MongoModel = require('../../models/endorsement');
 const Deductible = require('../../models/deductible');
+const Limit = require('../../models/limit');
 const AsyncHandler = require('../../middleware/asyncHandler');
 const ErrorResponse = require('../../utils/errorResponse');
 
@@ -31,6 +32,17 @@ const create = AsyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Please add Deductible Id`, 404));
   }
 
+  let limits = req.body.limits;
+  console.log(limits);
+
+  if (limits && limits.length > 0) {
+    limits.forEach(async (limitId) => {
+      let limit = await Limit.findById(limitId);
+      if (!limit) {
+        return next(new ErrorResponse(`Limit not found with id : ${limitId}`, 404));
+      }
+    });
+  }
 
   const model = await MongoModel.create(req.body);
 
@@ -61,6 +73,18 @@ const update = AsyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Please add Deductible Id`, 404));
   }
 
+
+  let limits = req.body.limits;
+  console.log(limits);
+
+  if (limits && limits.length > 0) {
+    limits.forEach(async (limitId) => {
+      let limit = await Limit.findById(limitId);
+      if (!limit) {
+        return next(new ErrorResponse(`Limit not found with id : ${limitId}`, 404));
+      }
+    });
+  }
 
   model = await MongoModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
