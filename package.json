@@ -44,7 +44,8 @@
     "pruneimages": "docker image prune -a",
     "cleandockers": "docker rm -f $(docker ps -a -q) && docker rmi -f $(docker images -q)",
     "lint": "eslint . --ext .js,.jsx",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "docs": "docgen build -i docs/InsuranceApplication.postman_collection.json -o src/public/index.html"
   },
   "repository": {
     "type": "git",
