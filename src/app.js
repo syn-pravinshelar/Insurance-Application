@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
@@ -40,6 +41,11 @@ app.use(
   })
 );
 
+/* View to show documentation */
+app.get('/public', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/public/index.html`));
+});
+
 app.use('/api/v1/healthcheck', require('./routes/v1/healthcheck'));
 app.use('/api/v1/authenticate', require('./routes/v1/authenticate'));
 app.use('/api/v1/deductible', authMiddleware, require('./routes/v1/deductible'));
@@ -51,12 +57,12 @@ app.use('/api/v1/product', authMiddleware, require('./routes/v1/product'));
 
 app.use(errorHandler);
 
-// app.use((req, res) => {
-//   res.status(404).json({
-//     status: 'Failed',
-//     message: `Can't find ${req.originalUrl} on this server!`,
-//   });
-// });
+app.use((req, res) => {
+  res.status(404).json({
+    status: 'Failed',
+    message: `Can't find ${req.originalUrl} on this server!`,
+  });
+});
 
 const PORT = process.env.PORT || 3000;
 
@@ -66,8 +72,3 @@ app.listen(PORT, () => {
     console.log(`Connected to MongoDB`);
   });
 });
-
-/** **
- *
- * `date=>${new Date()}\n method=>${req.method}nsender:${req.ip}`
- */
