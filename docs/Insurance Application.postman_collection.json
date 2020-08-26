@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "8dc5f77c-737c-47dc-a37c-5d6b902966b0",
+		"name": "Insurance Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Deductibles",
+			"item": [
+				{
+					"name": "Get single Deductible",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/deductible/5f411d324feefe7de455a3c4",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"deductible",
+								"5f411d324feefe7de455a3c4"
+							]
+						},
+						"description": "Get single Deductible by Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Deductible",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/deductible/5f4116b9dcfd9967e0021d79",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"deductible",
+								"5f4116b9dcfd9967e0021d79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Deductible",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"definedAs\": \"Allowable Values\",\r\n      \"deductibleValue\": [\r\n            {\r\n                  \"text\": \"$1,500\",\r\n                  \"value\": \"1500\"\r\n            }\r\n      ],\r\n      \"aggregateValue\": 1500,\r\n      \"version\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/deductible",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"deductible"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Existing Deductible",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"definedAs\": \"Allowed values\",\r\n      \"deductibleValue\": [],\r\n      \"aggregateValue\": 2500,\r\n      \"version\": 112\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/deductible/5f411fc6e2a2f41388fa58cb",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"deductible",
+								"5f411fc6e2a2f41388fa58cb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Deductibles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/deductible",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"deductible"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Limits",
+			"item": [
+				{
+					"name": "Get Single Limit",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/limit/5f4116b9dcfd9967e0021d79",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"limit",
+								"5f4116b9dcfd9967e0021d79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/limit/5f4116b9dcfd9967e0021d79",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"limit",
+								"5f4116b9dcfd9967e0021d79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Limit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"limitType\": \"Per Occurance\",\r\n      \"limitValueType\": \"Allowable Values\",\r\n      \"limitValue\": [\r\n            {\r\n                  \"text\": \"$1,500\",\r\n                  \"value\": \"1500\"\r\n            }\r\n      ],\r\n      \"version\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/limit",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"limit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update existing Limit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"definedAs\": \"Allowed values\",\r\n      \"deductibleValue\": [],\r\n      \"aggregateValue\": 2500,\r\n      \"version\": 112\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/limit/5f4116b9dcfd9967e0021d79",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"limit",
+								"5f4116b9dcfd9967e0021d79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Limits",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/limit",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"limit"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8720046-3baa-41fa-b1e1-76f26a527108",
+								"exec": [
+									"pm.test(\"Set Token\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"Token\", \"Bearer \" + jsonData.token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t  \"username\": \"user1\",\r\n      \"password\": \"express\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Check Health Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/healthcheck",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Endorsements",
+			"item": [
+				{
+					"name": "Get Endorsement By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/endorsement/5f4116b9dcfd9967e0021d79",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"endorsement",
+								"5f4116b9dcfd9967e0021d79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update existing Endorsement",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"endorsementName\": \"Test123\",\r\n      \"endorsementCode\": \"Employee Only\",\r\n      \"lineOfBusiness\": \"Life and Annuities\",\r\n      \"endorsementType\": \"Policy\",\r\n      \"endorsementDescription\": \"Test Description\",\r\n      \"status\": \"Draft\",\r\n      \"effectiveDate\": \"2020-08-22\",\r\n      \"expirationDate\": \"2021-08-22\",\r\n      \"jurisdiction\": \"US-NY\",\r\n      \"deductibles\": \"5f411d324feefe7de455a3c4\",\r\n      \"limits\": [\r\n            \"5f411d324feefe7de455a3c4\"\r\n      ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/endorsement/5f4116b9dcfd9967e0021d79",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"endorsement",
+								"5f4116b9dcfd9967e0021d79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Endorsements",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/endorsement",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"endorsement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{BaseUrl}}/endorsement/5f4116b9dcfd9967e0021d79",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"endorsement",
+								"5f4116b9dcfd9967e0021d79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Endorsement",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"endorsementName\": \"Test123\",\r\n      \"endorsementCode\": \"Employee Only\",\r\n      \"lineOfBusiness\": \"Life and Annuities\",\r\n      \"endorsementType\": \"Policy\",\r\n      \"endorsementDescription\": \"Test Description\",\r\n      \"status\": \"Draft\",\r\n      \"effectiveDate\": \"2020-08-22\",\r\n      \"expirationDate\": \"2021-08-22\",\r\n      \"jurisdiction\": \"US-NY\",\r\n      \"deductibles\": \"5f411d324feefe7de455a3c4\",\r\n      \"limits\": [\r\n            \"5f411d324feefe7de455a3c4\"\r\n      ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/endorsement",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"endorsement"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
