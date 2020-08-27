@@ -66,9 +66,15 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`RESTful API server started on port ${PORT}`);
   connectDB().then(() => {
     console.log(`Connected to MongoDB`);
   });
 });
+
+module.exports = server;
+/** **
+ *
+ * `date=>${new Date()}\n method=>${req.method}nsender:${req.ip}`
+ */
