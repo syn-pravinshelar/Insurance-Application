@@ -33,6 +33,9 @@ app.use(limiter);
 // Enable CORS
 app.use(cors());
 
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Body parser
 app.use(express.json());
 app.use(
